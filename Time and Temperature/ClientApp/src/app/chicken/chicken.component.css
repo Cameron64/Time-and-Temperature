@@ -1,0 +1,21 @@
+.mat-slider {
+  height: 70vh;
+}
+
+/* .mat-slider-vertical .mat-slider-track-fill {
+  width: 10px !important;
+}
+
+.mat-slider-track-background {
+  width: 10px;
+}
+
+.mat-slider-thumb {
+  width: 20px;
+  height: 20px;
+} */
+.center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

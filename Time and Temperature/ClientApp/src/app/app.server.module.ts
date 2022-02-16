@@ -1,11 +1,21 @@
 import { NgModule } from '@angular/core';
-import { ServerModule } from '@angular/platform-server';
-import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
-import { AppModule } from './app.module';
+import { ChickenComponent } from './chicken/chicken.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
+import { TempToTimePipe } from './pipes/tempToTime';
 
 @NgModule({
-    imports: [AppModule, ServerModule, ModuleMapLoaderModule],
-    bootstrap: [AppComponent]
+  imports: [
+    BrowserModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+  ],
+  declarations: [AppComponent, ChickenComponent, TempToTimePipe],
+  bootstrap: [AppComponent],
 })
-export class AppServerModule { }
+export class AppModule {}

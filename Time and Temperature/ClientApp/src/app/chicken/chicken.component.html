@@ -1,0 +1,43 @@
+<div style="width 50%">
+<div class="center">
+  <div style="width:100%">
+    <h1>Chicken Pasteurization</h1>
+    <div>
+      Enter a temperature to see how long it will take to see a 5.0 log
+      Reduction in harmful bacteria
+    </div>
+
+    <span style="width:75%;display: inline-block;">
+      <span>
+        <span *ngIf="timeDisplay">
+          {{ timeDisplay.minutes }}
+          <span *ngIf="timeDisplay.minutes">Minute</span>
+          <span *ngIf="timeDisplay.minutes > 1">s</span>
+
+          {{ timeDisplay.seconds }}
+          <span *ngIf="timeDisplay.seconds">Second</span>
+          <span *ngIf="timeDisplay.seconds > 1">s</span>
+        </span>
+
+        <div>at {{ temperatureF }}°{{ isFahrenheit ? 'F' : 'C' }}</div>
+      </span>
+    </span>
+
+    <span style="width:25%">
+      <mat-slider
+        style="right: 10px"
+        thumbLabel
+        (change)="calcTime()"
+        [displayWith]="formatLabel"
+        [(value)]="temperatureF"
+        vertical="true"
+        tickInterval="1000"
+        step="1"
+        min="130"
+        max="160"
+        aria-label="units"
+      ></mat-slider>
+    </span>
+  </div>
+</div>
+</div>

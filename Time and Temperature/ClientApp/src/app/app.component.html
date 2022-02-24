@@ -1,1 +1,23 @@
-<app-chicken></app-chicken>
+<mat-drawer-container class="drawer-container" autosize>
+    <mat-drawer 
+    [(opened)]="navOpen" 
+    #drawer 
+    class="drawer-sidenav" 
+    mode="side" >
+        <app-nav></app-nav>
+    </mat-drawer>
+  
+    <div class="sidenav-content">
+        <div class="hamburger">
+            <button type="button" mat-button (click)="drawer.toggle()" *ngIf="!navOpen">
+                <mat-icon aria-hidden="false" aria-label="menu icon">menu</mat-icon>
+            </button>
+        </div>
+        <div class="main-content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+  
+  </mat-drawer-container>
+
+  

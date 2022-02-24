@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" [routerLink]="'dashboard'" style="cursor:pointer">Time and Temperature</mat-toolbar>
+
+
+<mat-accordion [displayMode]="'flat'">
+  <mat-expansion-panel hideToggle *ngFor="let destinationType of destinationTypes">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon  matListIcon>{{destinationType.icon}}</mat-icon>
+        <span style="margin-left:20px; margin-top: 2px;">
+          {{destinationType.name}}
+        </span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let destination of destinations | basicFilter: {'type' : destinationType.type}" 
+      [routerLink]="destination.url" 
+      [routerLinkActive]="['active']"
+      (click)="selected = destination.name">
+        <a [class.active]="selected == destination.name" matLine>{{destination.name}}</a>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-expansion-panel>
+</mat-accordion>
+
+

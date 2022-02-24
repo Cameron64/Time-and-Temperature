@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'my-app',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
-  name = 'Angular';
+  navOpen;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe((val) => {
+      this.closeNav();
+    })
+  }
+
+  
+
+  closeNav() {
+    this.navOpen = false;
+  }
 }

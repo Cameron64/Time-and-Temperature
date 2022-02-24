@@ -1,3 +1,28 @@
 p {
   font-family: Lato;
 }
+
+mat-drawer-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.sidenav-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.main-content {
+    margin-top: 40px;
+    margin-left: 50px;
+}
+
+.hamburger {
+  position:absolute;
+}

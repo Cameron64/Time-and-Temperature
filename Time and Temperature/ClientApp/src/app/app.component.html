@@ -7,7 +7,7 @@
         <app-nav></app-nav>
     </mat-drawer>
   
-    <div class="sidenav-content">
+    <div class="sidenav-content" (click)="navOpen = false;">
         <div class="hamburger">
             <button type="button" mat-button (click)="drawer.toggle()" *ngIf="!navOpen">
                 <mat-icon aria-hidden="false" aria-label="menu icon">menu</mat-icon>

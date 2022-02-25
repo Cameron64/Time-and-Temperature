@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { SettingsService } from '../services/settings.service';
 
 @Component({
@@ -22,9 +24,19 @@ export class NavComponent {
   public panelOpenState;
   public DestinationType = DestinationType;
 
-  constructor(private settings: SettingsService) {}
+  wantsCelsiusControl = new FormControl();
+  wantsCelsius: boolean;
+  
+  constructor(public settings: SettingsService) {}
 
   ngOnInit() {
+    this.settings.wantsCelsius$.subscribe((value: boolean) => {
+      this.wantsCelsius = value;
+    })
+  }
+
+  wantsCelsiusChange(wantsCelsius:MatButtonToggleChange){
+    this.settings.setWantsCelsius(wantsCelsius.value);
   }
 
  

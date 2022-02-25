@@ -7,14 +7,17 @@ import { SettingsService } from '../services/settings.service';
   styleUrls: ['./chicken.component.css'],
 })
 export class ChickenComponent {
-  public isFahrenheit: boolean;
-  public temperatureF: number | null = 150;
+  public wantsCelsius: boolean;
+  public temperature: number;
   public timeDisplay: any = { minutes: 1, seconds: 30 };
 
-  constructor(private settings: SettingsService) {}
+  constructor(public settings: SettingsService) {}
 
   ngOnInit() {
-    this.isFahrenheit = this.settings.getIsFahrenheit();
+    this.settings.wantsCelsius$.subscribe((value: boolean) => {
+      this.wantsCelsius = value;
+      this.temperature = this.wantsCelsius ? 65 : 150
+    })
   }
 
   formatLabel(value: number) {
@@ -22,7 +25,7 @@ export class ChickenComponent {
   }
 
   calcTime() {
-    let temperatureC = (5 / 9) * (this.temperatureF - 32);
+    let temperatureC = this.wantsCelsius ? this.temperature : (5 / 9) * (this.temperature - 32);
     let minutes = 10 ** (Math.log10(1.8) - (temperatureC - 65) / 7.04);
     this.timeDisplay = this.time(minutes);
   }

@@ -19,7 +19,7 @@
           <span *ngIf="timeDisplay.seconds > 1">s</span>
         </span>
 
-        <div>at {{ temperatureF }}°{{ isFahrenheit ? 'F' : 'C' }}</div>
+        <div>at {{ temperature }}°{{ wantsCelsius ? 'C' : 'F' }}</div>
       </span>
     </span>
 
@@ -29,12 +29,12 @@
         thumbLabel
         (change)="calcTime()"
         [displayWith]="formatLabel"
-        [(value)]="temperatureF"
+        [(value)]="temperature"
         vertical="true"
         tickInterval="1000"
         step="1"
-        min="130"
-        max="160"
+        [min]="wantsCelsius ? settings.tempSettings.minC : settings.tempSettings.minF"
+        [max]="wantsCelsius ? settings.tempSettings.maxC : settings.tempSettings.maxF"
         aria-label="units"
       ></mat-slider>
     </span>

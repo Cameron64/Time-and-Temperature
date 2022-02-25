@@ -23,3 +23,9 @@
 </mat-accordion>
 
 
+<div style="bottom:0;position:absolute;">
+  <mat-button-toggle-group (change)="wantsCelsiusChange($event)" [(ngModel)]="wantsCelsius"  name="tempPreference" aria-label="Font Style">
+    <mat-button-toggle [value]="false">Fahrenheit</mat-button-toggle>
+    <mat-button-toggle [value]="true">Celsius</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
